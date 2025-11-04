@@ -12,7 +12,7 @@ setup:
 		bcf		CFGS	; point to Flash program memory  
 		bsf		EEPGD		; access Flash program memory
 		movlw	0x00
-		movwf	TRISC, A    ; setup C as an output
+		movwf	TRISJ, A    ; setup J as an output  (changed from TRISC)
 		movlw	0x00
 		movwf	TRISE, A    ; setup E as an output
 		movlw	0x00
@@ -40,26 +40,26 @@ start:
 		movwf	direction, A	; Initialize direction to increment (0)
 
 loop:	
-		movff	waveValue, PORTC	; Output current waveform value to PORTC (DAC input)
+		movff	waveValue, PORTJ	; Output current waveform value to PORTJ (DAC input now on J)
 		call	bigdelay			; Variable delay controlled by PORTD input
 		
 		; Check current direction and update waveform value
 		movf	direction, W, A	; Load direction flag
-		btfsc	STATUS, Z, A		; Skip if incrementing (direction = 0)
+		btfsc	STATUS, 2, A		; Skip if incrementing (direction = 0) - Z flag is bit 2
 		bra		increment		; Branch to increment if direction = 0
 		bra		decrement		; Branch to decrement if direction = 1
 		
 increment:
 		movf	waveValue, W, A	; Load waveform value to check if at 255
 		sublw	0xFF			; Subtract from 255 (W = 255 - waveValue)
-		btfsc	STATUS, Z, A	; Skip next if waveValue is 255 (need to change direction)
+		btfsc	STATUS, 2, A	; Skip next if waveValue is 255 (need to change direction) - Z flag is bit 2
 		bra		change_dir_dec	; Change to decrement direction if at 255
 		incf	waveValue, F, A	; Increment waveform value
 		bra		continue		; Continue loop
 		
 decrement:
 		movf	waveValue, W, A	; Load waveform value to check if reached 0
-		btfsc	STATUS, Z, A	; Skip next if waveValue is 0 (need to change direction)
+		btfsc	STATUS, 2, A	; Skip next if waveValue is 0 (need to change direction) - Z flag is bit 2
 		bra		change_dir_inc	; Change to increment direction if at 0
 		decf	waveValue, F, A	; Decrement waveform value
 		bra		continue		; Continue loop
