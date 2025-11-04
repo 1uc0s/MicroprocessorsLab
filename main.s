@@ -1,4 +1,4 @@
-		#include <xc.inc>
+#include <xc.inc>
 
 psect code, abs
 main:
@@ -28,36 +28,54 @@ setup:
 		movf	PORTD, W, A    ; makes the delay repeat by PORTD input
 		movwf	0x22, A
 		goto	start
-		; ******* My data and where to put it in RAM *
-myTable:
-		db		0x01, 0x02, 0x04, 0x08, 0x80, 0x40, 0x20, 0x10
-		myArray EQU 0x400	; Address in RAM for data
-		counter EQU 0x08	; Address of counter variable
+		; ******* Triangle Wave Generator Variables ****
+		waveValue EQU 0x08	; Address of waveform value (0-255)
+		direction EQU 0x09	; Address of direction flag (0=increment, 1=decrement)
 		align	2			; ensure alignment of subsequent instructions
 		; ******* Main programme *********************
 start:		
-		lfsr	0, myArray	; Load FSR0 with address in RAM		
-		movlw	low highword(myTable)	; address of data in PM
-		movwf	TBLPTRU, A	; load upper bits to TBLPTRU
-		movlw	high(myTable)		; address of data in PM
-		movwf	TBLPTRH, A	; load high byte to TBLPTRH
-		movlw	low(myTable)			; address of data in PM
-		movwf	TBLPTRL, A	; load low byte to TBLPTRL
-		movlw	8				; 16 bytes to read
-		movwf	counter, A	; our counter register
-		
+		movlw	0x00
+		movwf	waveValue, A	; Initialize waveform value to 0
+		movlw	0x00
+		movwf	direction, A	; Initialize direction to increment (0)
 
 loop:	
-		movff	TABLAT, PORTF
-		tblrd*+					; move one byte from PM to TABLAT, increment TBLPRT
-		movff	TABLAT, PORTC
-		movff	TABLAT, PORTE
-		movff	TABLAT, POSTINC0	; move read data from TABLAT to (FSR0), increment FSR0
-		call	bigdelay			; go to the delay loop
-		decfsz	counter, A	; count down to zero
+		movff	waveValue, PORTC	; Output current waveform value to PORTC (DAC input)
+		call	bigdelay			; Variable delay controlled by PORTD input
 		
-		bra		loop			; keep going until finished
-		goto	0
+		; Check current direction and update waveform value
+		movf	direction, W, A	; Load direction flag
+		btfsc	STATUS, Z, A		; Skip if incrementing (direction = 0)
+		bra		increment		; Branch to increment if direction = 0
+		bra		decrement		; Branch to decrement if direction = 1
+		
+increment:
+		movf	waveValue, W, A	; Load waveform value to check if at 255
+		sublw	0xFF			; Subtract from 255 (W = 255 - waveValue)
+		btfsc	STATUS, Z, A	; Skip next if waveValue is 255 (need to change direction)
+		bra		change_dir_dec	; Change to decrement direction if at 255
+		incf	waveValue, F, A	; Increment waveform value
+		bra		continue		; Continue loop
+		
+decrement:
+		movf	waveValue, W, A	; Load waveform value to check if reached 0
+		btfsc	STATUS, Z, A	; Skip next if waveValue is 0 (need to change direction)
+		bra		change_dir_inc	; Change to increment direction if at 0
+		decf	waveValue, F, A	; Decrement waveform value
+		bra		continue		; Continue loop
+		
+change_dir_inc:
+		movlw	0x00
+		movwf	direction, A	; Set direction to increment
+		bra		continue
+		
+change_dir_dec:
+		movlw	0x01
+		movwf	direction, A	; Set direction to decrement
+		bra		continue
+		
+continue:
+		bra		loop			; Loop forever
 bigdelay:
 		movlw   high(0xFFFF)
 		movwf	0x20, A

@@ -37,3 +37,5 @@ nb-configuration.xml
 html/
 funclist
 disassembly/
+
+*.code-workspace
