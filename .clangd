@@ -1,0 +1,30 @@
+CompileFlags:
+  Add: 
+    - -x
+    - c++
+    - -std=c++17
+    - -I/Applications/microchip/xc8/v3.10/pic-as/include
+    - -I/Users/lucasertugrul/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8/include
+  Remove: 
+    - -mcpu=*
+    - -misa=*
+    - -xassembler-with-cpp
+    - -mdfp=*
+
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: None
+  Suppress: 
+    - unused-includes
+    - missing-includes
+
+Index:
+  Background: Build
+
+If:
+  PathMatch: .*\.(s|S)$
+Diagnostics:
+  Suppress: all
+Index:
+  Background: false
+
