@@ -1,5 +1,4 @@
 #include <xc.inc>
-
 psect code, abs
 main:
 		org 0x0
@@ -33,6 +32,9 @@ setup:
 		direction EQU 0x09	; Address of direction flag (0=increment, 1=decrement)
 		align	2			; ensure alignment of subsequent instructions
 		; ******* Main programme *********************
+		call SPI_MasterInit
+		
+
 start:		
 		movlw	0x00
 		movwf	waveValue, A	; Initialize waveform value to 0
@@ -40,8 +42,10 @@ start:
 		movwf	direction, A	; Initialize direction to increment (0)
 
 loop:	
-		movff	waveValue, PORTJ	; Output current waveform value to PORTJ (DAC input now on J)
+		movff	waveValue, W, A; Output current waveform value to Working Register
+		call	SPI_MasterTransmit
 		call	bigdelay			; Variable delay controlled by PORTD input
+		
 		
 		; Check current direction and update waveform value
 		movf	direction, W, A	; Load direction flag
@@ -92,3 +96,21 @@ dloop:		decf	0x21, f, A
 		return
 		
 		end main
+		
+SPI_MasterInit:        ; Set Clock edge to negative
+		bcf     CKE2       ; CKE bit in SSP2STAT,
+		; MSSP enable; CKP=1; SPI master, clock=Fosc/64 (1MHz)
+		movlw   (SSP2CON1_SSPEN_MASK)|(SSP2CON1_CKP_MASK)|(SSP2CON1_SSPM1_MASK)
+		movwf   SSP2CON1, A
+		; SDO2 output; SCK2 output
+		bcf     TRISD, PORTD_SDO2_POSN, A  ; SDO2 output
+		bcf     TRISD, PORTD_SCK2_POSN, A  ; SCK2 output
+		return
+
+SPI_MasterTransmit:    ; Start transmission of data (held in W)
+		movwf   SSP2BUF, A     ; write data to output buffer
+Wait_Transmit:         ; Wait for transmission to complete
+		btfss   PIR2, 5        ; check interrupt flag to see if data has been sent
+		bra     Wait_Transmit
+		bcf     PIR2, 5        ; clear interrupt flag
+		return
