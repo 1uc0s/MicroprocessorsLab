@@ -22,16 +22,15 @@ setup:
 		movwf	0x20, A
 		movlw	low(0xFFFF)
 		movwf	0x21, A		    ; makes the delay length 0x0FFF
-		movf	PORTD, W, A    ; makes the delay repeat by PORTD input
+		movf	PORTE, W, A    ; makes the delay repeat by PORTE input
 		movwf	0x22, A
-		goto	start
 		; ******* Triangle Wave Generator Variables ****
 		waveValue EQU 0x08	; Address of waveform value (0-255)
 		direction EQU 0x09	; Address of direction flag (0=increment, 1=decrement)
 		align	2			; ensure alignment of subsequent instructions
 		; ******* Main programme *********************
 		call SPI_MasterInit
-		
+		goto	start
 
 start:		
 		movlw	0x00
