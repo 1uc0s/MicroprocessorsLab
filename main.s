@@ -11,15 +11,13 @@ setup:
 		bcf		CFGS	; point to Flash program memory  
 		bsf		EEPGD		; access Flash program memory
 		movlw	0x00
-		movwf	TRISJ, A    ; setup J as an output  (changed from TRISC)
-		movlw	0x00
-		movwf	TRISE, A    ; setup E as an output
+		movwf	TRISH, A    ; setup H as an output 
 		movlw	0x00
 		movwf	TRISF, A    ; setup F as an output
 		movlw	0x00
 		movwf	TRISG, A    ; setup G as an output
 		movlw	0xFF
-		movwf	TRISD, A    ; setup D as an input
+		movwf	TRISE, A    ; setup E as an input
 		movlw   high(0xFFFF)
 		movwf	0x20, A
 		movlw	low(0xFFFF)
@@ -44,7 +42,7 @@ start:
 loop:	
 		movff	waveValue, W, A; Output current waveform value to Working Register
 		call	SPI_MasterTransmit
-		call	bigdelay			; Variable delay controlled by PORTD input
+		call	bigdelay			; Variable delay controlled by PORTE input
 		
 		
 		; Check current direction and update waveform value
@@ -85,7 +83,7 @@ bigdelay:
 		movwf	0x20, A
 		movlw	low(0xFFFF)
 		movwf	0x21, A				; makes the delay length 0x0FFF
-		movf	PORTD, W, A	; makes the delay repeat by PORTD input
+		movf	PORTE, W, A	; makes the delay repeat by PORTE input
 		movwf	0x22, A
 		movlw	0x00
 dloop:		decf	0x21, f, A
