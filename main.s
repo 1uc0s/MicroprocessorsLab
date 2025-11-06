@@ -40,8 +40,8 @@ start:
 		movwf	direction, A	; Initialize direction to increment (0)
 
 loop:	
-		movff	waveValue, W, A; Output current waveform value to Working Register
-		call	SPI_MasterTransmit
+	movf	waveValue, W, A	; Output current waveform value to Working Register
+	call	SPI_MasterTransmit
 		call	bigdelay			; Variable delay controlled by PORTE input
 		
 		
@@ -93,8 +93,6 @@ dloop:		decf	0x21, f, A
 		bc dloop
 		return
 		
-		end main
-		
 SPI_MasterInit:        ; Set Clock edge to negative
 		bcf     CKE2       ; CKE bit in SSP2STAT,
 		; MSSP enable; CKP=1; SPI master, clock=Fosc/64 (1MHz)
@@ -106,9 +104,11 @@ SPI_MasterInit:        ; Set Clock edge to negative
 		return
 
 SPI_MasterTransmit:    ; Start transmission of data (held in W)
-		movwf   SSP2BUF, A     ; write data to output buffer
+	movwf   SSP2BUF, A     ; write data to output buffer
 Wait_Transmit:         ; Wait for transmission to complete
-		btfss   PIR2, 5        ; check interrupt flag to see if data has been sent
-		bra     Wait_Transmit
-		bcf     PIR2, 5        ; clear interrupt flag
-		return
+	btfss   PIR2, 5, A     ; check interrupt flag to see if data has been sent
+	bra     Wait_Transmit
+	bcf     PIR2, 5, A     ; clear interrupt flag
+	return
+	
+	end main
