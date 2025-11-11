@@ -1,0 +1,12 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#3F2051",
+        "titleBar.activeBackground": "#582D71",
+        "titleBar.activeForeground": "#FCFAFD"
+    },
+    "mplab.clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}/_build/Simple1/default"
+    ],
+    "mplab.clangd.path": "",
+    "cmake.sourceDirectory": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/cmake/Simple1/default"
+}

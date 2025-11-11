@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default",
+  "command": "/Applications/microchip/xc8/v3.10/pic-as/bin/pic-as -D__DEBUG=1 -I\"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab\" -mcpu=18F87K22 -c -misa=std -fmax-errors=20 -mwarn=0 -xassembler-with-cpp -mdfp=/Users/lucasertugrul/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8 -o CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o -c \"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/LCD.s\"",
+  "file": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/LCD.s",
+  "output": "CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o"
+},
+{
+  "directory": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default",
+  "command": "/Applications/microchip/xc8/v3.10/pic-as/bin/pic-as -D__DEBUG=1 -I\"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab\" -mcpu=18F87K22 -c -misa=std -fmax-errors=20 -mwarn=0 -xassembler-with-cpp -mdfp=/Users/lucasertugrul/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8 -o CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/UART.s.o -c \"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/UART.s\"",
+  "file": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/UART.s",
+  "output": "CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/UART.s.o"
+},
+{
+  "directory": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default",
+  "command": "/Applications/microchip/xc8/v3.10/pic-as/bin/pic-as -D__DEBUG=1 -I\"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab\" -mcpu=18F87K22 -c -misa=std -fmax-errors=20 -mwarn=0 -xassembler-with-cpp -mdfp=/Users/lucasertugrul/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8 -o CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/config.s.o -c \"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/config.s\"",
+  "file": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/config.s",
+  "output": "CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/config.s.o"
+},
+{
+  "directory": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default",
+  "command": "/Applications/microchip/xc8/v3.10/pic-as/bin/pic-as -D__DEBUG=1 -I\"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab\" -mcpu=18F87K22 -c -misa=std -fmax-errors=20 -mwarn=0 -xassembler-with-cpp -mdfp=/Users/lucasertugrul/.mchp_packs/Microchip/PIC18F-K_DFP/1.14.301/xc8 -o CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/main.s.o -c \"/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/main.s\"",
+  "file": "/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/main.s",
+  "output": "CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/main.s.o"
+}
+]

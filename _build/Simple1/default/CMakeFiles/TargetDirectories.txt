@@ -1,0 +1,4 @@
+/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default/CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir
+/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default/CMakeFiles/Simple1_default_image_Y8BtFlFE.dir
+/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default/CMakeFiles/edit_cache.dir
+/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/_build/Simple1/default/CMakeFiles/rebuild_cache.dir
