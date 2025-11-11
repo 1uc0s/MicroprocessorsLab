@@ -1,12 +1,11 @@
 # ninja log v7
-2	291	1762857314773995730	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/UART.s.o	496fd80e13dd93cc
-2	292	1762857314774150065	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/config.s.o	e17c5ea5d8207277
-1	292	1762857314773634977	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o	2b7a35a63c7cbcfb
 3	238	1762857360813404900	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/UART.s.o	496fd80e13dd93cc
-2	239	1762857360813048522	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o	2b7a35a63c7cbcfb
 3	239	1762857360813633569	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/config.s.o	e17c5ea5d8207277
-0	108	1762857368500674156	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o	2b7a35a63c7cbcfb
-2	196	1762857581262727751	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/main.s.o	d73e3fc605885f23
-196	324	1762857581457039263	/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/out/Simple1/default.elf	6cde4fb55b05c3b0
 1	168	1762857620634035167	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o	2b7a35a63c7cbcfb
+2	196	1762857581262727751	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/main.s.o	d73e3fc605885f23
 168	299	1762857620800705547	/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/out/Simple1/default.elf	6cde4fb55b05c3b0
+6	301	1762859505891660698	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/UART.s.o	496fd80e13dd93cc
+6	301	1762859505891362577	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/LCD.s.o	2b7a35a63c7cbcfb
+6	301	1762859505891899446	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/main.s.o	d73e3fc605885f23
+6	301	1762859505891786905	CMakeFiles/Simple1_default_default_PIC_AS_assemble.dir/Users/lucasertugrul/LocalRepos/Year_3_Physics/MicroprocessorsLab/config.s.o	e17c5ea5d8207277
+301	505	1762859506186546981	/Users/lucasertugrul/LocalRepos/Year 3 Physics/MicroprocessorsLab/out/Simple1/default.elf	6cde4fb55b05c3b0

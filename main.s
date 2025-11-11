@@ -1,7 +1,7 @@
 #include <xc.inc>
 
 extrn	UART_Setup, UART_Transmit_Message  ; external subroutines
-extrn	LCD_Setup, LCD_Write_Message, LCD_Clear
+extrn	LCD_Setup, LCD_Write_Message, LCD_Clear, LCD_line1, LCD_line2
 
 
 bsf     TRISE, 0, A     ; set RE0 as input (bit 0 of TRISE = 1)
@@ -52,9 +52,20 @@ loop: 	tblrd*+			; one byte from PM to TABLAT, increment TBLPRT
 	lfsr	2, myArray
 	call	UART_Transmit_Message
 
+	call	LCD_line1
+
 	movlw	myTable_l	; output message to LCD
 	addlw	0xff		; 
 	lfsr	2, myArray
+
+	call	LCD_Write_Message
+
+	call	LCD_line2
+
+	movlw	myTable_l	; output message to LCD
+	addlw	0xff		; 
+	lfsr	2, myArray
+
 	call	LCD_Write_Message
 
 	btfsc 	PORTE, 0, A     ; check if RE0 is set
