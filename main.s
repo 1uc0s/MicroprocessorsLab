@@ -2,6 +2,9 @@
 
 extrn	UART_Setup, UART_Transmit_Message  ; external subroutines
 extrn	LCD_Setup, LCD_Write_Message
+
+bsf     TRISE, 0, A     ; set RE0 as input (bit 0 of TRISE = 1)
+
 	
 psect	udata_acs   ; reserve data space in access ram
 counter:    ds 1    ; reserve one byte for a counter variable
@@ -49,9 +52,13 @@ loop: 	tblrd*+			; one byte from PM to TABLAT, increment TBLPRT
 	call	UART_Transmit_Message
 
 	movlw	myTable_l	; output message to LCD
-	addlw	0xff		; don't send the final carriage return to LCD
+	addlw	0xff		; 
 	lfsr	2, myArray
 	call	LCD_Write_Message
+
+	btfsc 	RE0, 0, A     ; check if RE0 is set
+	call 	LCD_Clear
+
 
 	goto	$		; goto current line in code
 
